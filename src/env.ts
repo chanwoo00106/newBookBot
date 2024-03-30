@@ -1,10 +1,6 @@
 import { config } from 'dotenv'
-import { resolve } from 'path'
 
-const environment = process.env.NODE_ENV
-const path =
-  environment === 'production'
-    ? resolve(__dirname, '../.env.production')
-    : resolve(__dirname, '../.env.development')
+const isProd = process.env.NODE_ENV === 'production'
+const path = isProd ? '.env.production' : '.env.development'
 
 config({ path })

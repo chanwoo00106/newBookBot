@@ -1,18 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["ES2020"],
-    "module": "ES2020",
-    "moduleResolution": "node",
-    "baseUrl": "./src",
-    "strict": true,
+    "target": "es2016",
+    "module": "commonjs",
     "esModuleInterop": true,
-    "declaration": true,
-    "declarationDir": "./dist",
-    "declarationMap": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./dist"
   },
-  "include": ["@types", "./src"]
+  "include": ["@types", "src/**/*"]
 }
