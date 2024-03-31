@@ -3,6 +3,7 @@ import { Client, Events, GatewayIntentBits } from 'discord.js'
 import commands from './commands'
 import { isCommandKey } from './libs'
 import setupCommands from './setupCommands'
+import batchs from './batchs'
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] })
 
@@ -17,6 +18,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (!isCommandKey(commandName)) return
 
   return commands[commandName].execute(interaction)
+})
+
+batchs.forEach((batch) => {
+  setInterval(async () => {
+    Promise.all(await batch.execute(client))
+  }, batch.millisecond)
 })
 
 setupCommands()
