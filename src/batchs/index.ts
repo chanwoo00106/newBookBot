@@ -1,5 +1,5 @@
-import alarm from './alarm'
+import newBookList from './newBookList'
 
-const batchs = [alarm]
+const batchs = [newBookList]
 
 export default batchs

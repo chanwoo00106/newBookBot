@@ -1,4 +1,5 @@
 import './env'
+import './libs/dayjsSetup'
 import { Client, Events, GatewayIntentBits } from 'discord.js'
 import commands from './commands'
 import { isCommandKey } from './libs'
@@ -22,7 +23,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
 batchs.forEach((batch) => {
   setInterval(async () => {
-    Promise.all(await batch.execute(client))
+    const promises = await batch.execute(client)
+    if (!promises) return
+
+    Promise.all(promises)
   }, batch.millisecond)
 })
 
