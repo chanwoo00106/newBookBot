@@ -24,7 +24,7 @@ export default {
       return interaction.reply('채널 등록에 성공했습니다')
     } catch (e) {
       console.log(e)
-      interaction.reply('채널 등록에 실패했습니다')
+      return interaction.reply('채널 등록에 실패했습니다')
     }
   },
 }
