@@ -50,10 +50,12 @@ const newBookList = {
 
     const promises = channels.map((i) => {
       return new Promise(() => {
-        const channel = client.channels.cache.get(i)
-        if (!(channel instanceof TextChannel)) return
+        try {
+          const channel = client.channels.cache.get(i)
+          if (!(channel instanceof TextChannel)) return
 
-        channel.send({ embeds })
+          channel.send({ embeds })
+        } catch (e) {}
       })
     })
 

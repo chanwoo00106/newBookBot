@@ -18,6 +18,6 @@ model Channel {
   id              String   @id
   createdAt       DateTime @default(now()) @map("created_at")
   isDailyReminder Boolean  @default(true)
-  guild           Guild    @relation(fields: [guildId], references: [id])
+  guild           Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
   guildId         String
 }
