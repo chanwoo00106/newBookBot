@@ -11,13 +11,27 @@ datasource db {
 model Guild {
   id        String    @id
   createdAt DateTime  @default(now()) @map("created_at")
-  Channel   Channel[]
+  channels  Channel[]
 }
 
 model Channel {
-  id              String   @id
-  createdAt       DateTime @default(now()) @map("created_at")
-  isDailyReminder Boolean  @default(true)
-  guild           Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
-  guildId         String
+  id        String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+  guild     Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  guildId   String
+}
+
+model Book {
+  id           Int      @id
+  title        String
+  description  String?
+  link         String
+  cover        String
+  pubDate      DateTime @map("pub_date")
+  categoryName String   @map("category_name")
+  publisher    String
+  priceSales   Int      @map("price_sales")
+  author       String
+  views        Int      @default(0) @map("is_viewed")
+  createdAt    DateTime @default(now()) @map("created_at")
 }

@@ -4,7 +4,11 @@ import {
   NewBookListResSchema,
 } from '../models/res/NewBookListRes'
 
-const fetchNewBookList = () => {
+interface Params {
+  MaxResults: number
+}
+
+const fetchNewBookList = ({ MaxResults }: Params) => {
   return aladinApi<NewBookListRes>(
     {
       method: 'get',
@@ -12,7 +16,7 @@ const fetchNewBookList = () => {
       params: {
         ttbkey: process.env.TTB_KEY,
         QueryType: 'ItemNewSpecial',
-        MaxResults: 2,
+        MaxResults,
         Start: 1,
         SearchTarget: 'Book',
         output: 'js',

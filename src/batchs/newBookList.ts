@@ -1,20 +1,22 @@
 import { Client, EmbedBuilder, TextChannel } from 'discord.js'
 import db from '../db'
 import dayjs from 'dayjs'
-import fetchNewBookList from '../service/fetchNewBookList'
 import { numberToPrice } from '../libs'
+import findTwoBooks from '../service/findTwoBooks'
+import { updateViewedBooks } from '../service'
 
 const newBookList = {
   execute: async (client: Client<boolean>) => {
     // if (dayjs().format('HH:mm') !== '07:00') return null
 
-    const data = await fetchNewBookList()
+    const data = await findTwoBooks()
+    updateViewedBooks(data)
 
     const channels = (await db.channel.findMany({ select: { id: true } })).map(
       (i) => i.id,
     )
 
-    let embeds = data.item.map((item) => {
+    let embeds = data.map((item) => {
       return new EmbedBuilder()
         .setTitle(item.title)
         .setDescription(item.description)
@@ -59,7 +61,7 @@ const newBookList = {
       })
     })
 
-    return promises
+    return [...promises]
   },
   millisecond: 10000,
 }
