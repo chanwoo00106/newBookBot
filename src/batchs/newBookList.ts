@@ -7,7 +7,7 @@ import { updateViewedBooks } from '../service'
 
 const newBookList = {
   execute: async (client: Client<boolean>) => {
-    // if (dayjs().format('HH:mm') !== '07:00') return null
+    if (dayjs().format('HH:mm') !== '07:00') return null
 
     const data = await findTwoBooks()
     updateViewedBooks(data)
@@ -63,7 +63,7 @@ const newBookList = {
 
     return [...promises]
   },
-  millisecond: 10000,
+  millisecond: 60 * 1000, // 1분
 }
 
 export default newBookList

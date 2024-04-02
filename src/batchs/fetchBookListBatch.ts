@@ -15,13 +15,13 @@ const ignoreCategory = [
 
 const fetchBookListBatch = {
   execute: async () => {
-    // if (dayjs().format('HH:mm') !== '10:48') return null
+    if (dayjs().hour() !== 5) return null
 
     const data = await fetchNewBookList({ MaxResults: 100 })
 
     const result = data.item
       .filter(
-        (item) => !ignoreCategory.find((i) => i.includes(item.categoryName)),
+        (item) => !ignoreCategory.find((i) => item.categoryName.includes(i)),
       )
       .map<Book>((item) => ({
         id: item.itemId,
@@ -44,7 +44,7 @@ const fetchBookListBatch = {
       }),
     ]
   },
-  millisecond: 60 * 1000,
+  millisecond: 60 * 60 * 1000, // 1시간
 }
 
 export default fetchBookListBatch
