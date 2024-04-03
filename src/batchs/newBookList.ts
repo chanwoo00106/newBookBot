@@ -25,7 +25,7 @@ const newBookList = {
         .setTimestamp()
         .addFields([
           {
-            name: '출판일',
+            name: '출간일',
             value: dayjs(item.pubDate).format('YYYY년 MM월 DD일'),
           },
           {
