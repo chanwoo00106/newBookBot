@@ -1,7 +1,8 @@
 import { SlashCommandBuilder, CommandInteraction } from 'discord.js'
 import { deleteChannelService, isExistChannel } from '../service'
+import CommandType from './CommandType'
 
-export default {
+const deleteChannel: CommandType = {
   data: new SlashCommandBuilder()
     .setName('delete-channel')
     .setDescription('신간 도서 알림 채널 취소'),
@@ -21,3 +22,5 @@ export default {
     }
   },
 }
+
+export default deleteChannel

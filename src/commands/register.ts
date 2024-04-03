@@ -1,8 +1,9 @@
 import { SlashCommandBuilder, CommandInteraction } from 'discord.js'
 import { addChannel, addGuild, isExistChannel } from '../service'
 import isExistGuild from '../service/isExistGuild'
+import CommandType from './CommandType'
 
-export default {
+const register: CommandType = {
   data: new SlashCommandBuilder()
     .setName('register')
     .setDescription('신간 도서 알림 채널 등록'),
@@ -28,3 +29,5 @@ export default {
     }
   },
 }
+
+export default register
