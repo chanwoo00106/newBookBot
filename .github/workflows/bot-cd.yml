@@ -48,7 +48,7 @@ jobs:
           port: ${{ secrets.AWS_SSH_PORT }}
           script_stop: true
           script: |
-            sudo docker pull badroom/anything:new-book-bot
+            sudo docker pull badroom/anything:new-book-bot --platform linux/amd64
             sudo docker stop new-book-bot
             sudo docker rm new-book-bot
             sudo docker rmi badroom/anything:new-book-bot
