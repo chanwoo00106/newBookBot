@@ -52,4 +52,4 @@ jobs:
             sudo docker stop new-book-bot
             sudo docker rm new-book-bot
             sudo docker rmi badroom/anything:new-book-bot
-            sudo docker run d --name new-book-bot badroom/anything:new-book-bot
+            sudo docker run -d --name new-book-bot badroom/anything:new-book-bot
