@@ -2,9 +2,9 @@ name: Discord bot CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -53,4 +53,3 @@ jobs:
             sudo docker rm new-book-bot
             sudo docker rmi badroom/anything:new-book-bot
             sudo docker run d --name new-book-bot badroom/anything:new-book-bot
-            
