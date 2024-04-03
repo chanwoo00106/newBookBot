@@ -51,5 +51,5 @@ jobs:
             sudo docker pull badroom/anything:new-book-bot --platform linux/amd64
             sudo docker stop new-book-bot
             sudo docker rm new-book-bot
-            sudo docker rmi badroom/anything:new-book-bot
+            sudo docker image rm -f $(docker image ls -q)
             sudo docker run -d --name new-book-bot badroom/anything:new-book-bot
