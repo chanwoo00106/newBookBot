@@ -1,0 +1,9 @@
+.git
+node_modules
+.dockerignore
+.env.development
+.env.example
+.gitignore
+.nvmrc
+.prettierrc.json
+Dockerfile
