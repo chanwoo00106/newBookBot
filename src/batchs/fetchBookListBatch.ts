@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import { fetchNewBookList } from '../service'
 import { Book } from '@prisma/client'
 import AddBooks from '../service/addBooks'
+import BatchType from './BatchType'
 
 const ignoreCategory = [
   '그래픽/멀티미디어',
@@ -13,7 +14,7 @@ const ignoreCategory = [
   'PC/게임/디지털 카메라',
 ]
 
-const fetchBookListBatch = {
+const fetchBookListBatch: BatchType = {
   execute: async () => {
     if (dayjs().hour() !== 5) return null
 

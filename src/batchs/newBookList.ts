@@ -1,12 +1,13 @@
-import { Client, EmbedBuilder, TextChannel } from 'discord.js'
+import { EmbedBuilder, TextChannel } from 'discord.js'
 import db from '../db'
 import dayjs from 'dayjs'
 import { numberToPrice } from '../libs'
 import findTwoBooks from '../service/findTwoBooks'
 import { updateViewedBooks } from '../service'
+import BatchType from './BatchType'
 
-const newBookList = {
-  execute: async (client: Client<boolean>) => {
+const newBookList: BatchType = {
+  execute: async (client) => {
     if (dayjs().format('HH:mm') !== '07:00') return null
 
     const data = await findTwoBooks()
@@ -61,7 +62,7 @@ const newBookList = {
       })
     })
 
-    return [...promises]
+    return promises
   },
   millisecond: 60 * 1000, // 1분
 }

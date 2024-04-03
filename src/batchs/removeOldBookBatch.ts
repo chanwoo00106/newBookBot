@@ -1,7 +1,8 @@
 import dayjs from 'dayjs'
 import db from '../db'
+import BatchType from './BatchType'
 
-const removeOldBookBatch = {
+const removeOldBookBatch: BatchType = {
   execute: async () => {
     if (dayjs().hour() !== 5) return
 
