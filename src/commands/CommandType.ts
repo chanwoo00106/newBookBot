@@ -1,7 +1,9 @@
 import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
 
+type CommandDataType = () => SlashCommandBuilder
+
 interface CommandType {
-  data: SlashCommandBuilder
+  data: CommandDataType | SlashCommandBuilder
   execute: (interaction: CommandInteraction) => Promise<any>
 }
 
