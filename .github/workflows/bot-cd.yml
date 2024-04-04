@@ -50,6 +50,6 @@ jobs:
             sudo docker login -u badroom -p ${{ secrets.DOCKER_TOKEN }}
             sudo docker stop new-book-bot
             sudo docker rm new-book-bot
-            sudo docker rmi $(docker images -q)
+            sudo docker rmi badroom/anything:new-book-bot
             sudo docker pull badroom/anything:new-book-bot --platform linux/amd64
             sudo docker run -d --name new-book-bot badroom/anything:new-book-bot
