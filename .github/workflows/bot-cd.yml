@@ -48,8 +48,8 @@ jobs:
           script_stop: true
           script: |
             sudo docker login -u badroom -p ${{ secrets.DOCKER_TOKEN }}
-            sudo docker pull badroom/anything:new-book-bot --platform linux/amd64
             sudo docker stop new-book-bot
             sudo docker rm new-book-bot
             sudo docker rmi $(docker images -q)
+            sudo docker pull badroom/anything:new-book-bot --platform linux/amd64
             sudo docker run -d --name new-book-bot badroom/anything:new-book-bot
