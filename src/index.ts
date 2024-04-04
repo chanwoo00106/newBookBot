@@ -1,5 +1,4 @@
 import './env'
-import './libs/dayjsSetup'
 import { Client, GatewayIntentBits } from 'discord.js'
 import setupCommands from './setupCommands'
 import batchs from './batchs'

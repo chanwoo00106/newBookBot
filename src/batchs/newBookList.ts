@@ -23,7 +23,7 @@ const newBookList: BatchType = {
         .setDescription(item.description)
         .setURL(item.link)
         .setImage(item.cover)
-        .setTimestamp()
+        .setTimestamp(dayjs().toDate())
         .addFields([
           {
             name: '출간일',
