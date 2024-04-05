@@ -10,7 +10,7 @@ const validation = z.object({
   querytype: z.string().optional().default('keyword'),
   searchtarget: z.string().optional().default('book'),
   start: z.number().optional().default(1),
-  maxresults: z.number().optional().default(10),
+  maxresults: z.number().optional().default(1),
   sort: z.string().optional().default('accuracy'),
   cover: z.string().optional().default('none'),
 })
@@ -54,9 +54,9 @@ const search: CommandType = {
       .addNumberOption((option) =>
         option
           .setName('max-results')
-          .setDescription('검색결과 한 페이지당 최대 출력 개수 (기분값: 10)')
+          .setDescription('검색결과 한 페이지당 최대 출력 개수 (기본값: 1)')
           .setMinValue(1)
-          .setMaxValue(100),
+          .setMaxValue(10),
       )
       .addStringOption((option) =>
         option
