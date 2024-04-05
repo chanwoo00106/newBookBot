@@ -28,7 +28,7 @@ const search: CommandType = {
         option
           .setName('query-type')
           .setDescription('검색 옵션')
-          .addChoices({ name: '제목+저자', value: 'keyword' })
+          .addChoices({ name: '(기본값)제목+저자', value: 'keyword' })
           .addChoices({ name: '제목 검색', value: 'title' })
           .addChoices({ name: '저자 검색', value: 'author' })
           .addChoices({ name: '출판사 검색', value: 'publisher' }),
@@ -37,7 +37,7 @@ const search: CommandType = {
         option
           .setName('search-target')
           .setDescription('검색 타겟')
-          .addChoices({ name: '도서', value: 'book' })
+          .addChoices({ name: '(기본값)도서', value: 'book' })
           .addChoices({ name: '외국도서', value: 'foreign' })
           .addChoices({ name: '음반', value: 'music' })
           .addChoices({ name: 'DVD', value: 'dvd' })
@@ -48,13 +48,13 @@ const search: CommandType = {
       .addNumberOption((option) =>
         option
           .setName('start')
-          .setDescription('검색결과 시작페이지')
+          .setDescription('검색결과 시작페이지 (기본값: 1)')
           .setMinValue(1),
       )
       .addNumberOption((option) =>
         option
           .setName('max-results')
-          .setDescription('검색결과 한 페이지당 최대 출력 개수')
+          .setDescription('검색결과 한 페이지당 최대 출력 개수 (기분값: 10)')
           .setMinValue(1)
           .setMaxValue(100),
       )
@@ -73,12 +73,12 @@ const search: CommandType = {
         option
           .setName('cover')
           .setDescription('표지 이미지 크기')
+          .addChoices({ name: '(기본값)없음', value: 'none' })
           .addChoices({ name: '큰 크기 : 너비 200px', value: 'big' })
           .addChoices({ name: '중간 큰 크기 : 너비 150px', value: 'midbig' })
           .addChoices({ name: '중간 크기 : 너비 85px', value: 'mid' })
           .addChoices({ name: '작은 크기 : 너비 75px', value: 'small' })
-          .addChoices({ name: '매우 작은 크기 : 너비 65px', value: 'mini' })
-          .addChoices({ name: '(기본값)없음', value: 'none' }),
+          .addChoices({ name: '매우 작은 크기 : 너비 65px', value: 'mini' }),
       )
 
     return command
