@@ -12,6 +12,11 @@ const ignoreCategory = [
   '편집자 기획 특선',
   '활용능력',
   'PC/게임/디지털 카메라',
+  'SNS',
+  '종교',
+  '어린이',
+  '초등학교참고서',
+  '만화',
 ]
 
 const fetchBookListBatch: BatchType = {
