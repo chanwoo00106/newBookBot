@@ -1,5 +1,5 @@
 {
-  "name": "@new-book-bot/base",
+  "name": "@new-book-bot/core",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",

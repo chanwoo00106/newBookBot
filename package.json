@@ -3,6 +3,6 @@
   "private": true,
   "scripts": {
     "discord": "pnpm -F @new-book-bot/discord",
-    "base": "pnpm -F @new-book-bot/base"
+    "core": "pnpm -F @new-book-bot/core"
   }
 }
