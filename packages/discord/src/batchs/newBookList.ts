@@ -11,7 +11,6 @@ const newBookList: BatchType = {
     if (dayjs().format('HH:mm') !== '07:00') return null
 
     const data = await findTwoBooks()
-    updateViewedBooks(data)
 
     const channels = (await db.channel.findMany({ select: { id: true } })).map(
       (i) => i.id,
@@ -26,6 +25,8 @@ const newBookList: BatchType = {
     const promises = channels.map((i) => {
       return new Promise(() => {
         try {
+          updateViewedBooks(data, i)
+
           const channel = client.channels.cache.get(i)
           if (!(channel instanceof TextChannel)) return
 
