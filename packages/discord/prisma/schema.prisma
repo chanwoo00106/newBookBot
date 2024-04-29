@@ -41,7 +41,7 @@ model ChannelsOnBooks {
   book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
   bookId    Int      @map("book_id")
   channel   Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade)
-  channelId String   @map("category_id")
+  channelId String   @map("channel_id")
   createdAt DateTime @default(now()) @map("created_at")
 
   @@id([bookId, channelId])
