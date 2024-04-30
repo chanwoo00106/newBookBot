@@ -2,6 +2,7 @@
   "name": "new-book-bot",
   "private": true,
   "scripts": {
-    "discord": "pnpm -F @new-book-bot/discord"
+    "discord": "pnpm -F @new-book-bot/discord",
+    "core": "pnpm -F @new-book-bot/core"
   }
 }

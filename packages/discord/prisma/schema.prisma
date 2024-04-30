@@ -15,23 +15,34 @@ model Guild {
 }
 
 model Channel {
-  id        String   @id
-  createdAt DateTime @default(now()) @map("created_at")
-  guild     Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  id        String            @id
+  createdAt DateTime          @default(now()) @map("created_at")
+  guild     Guild             @relation(fields: [guildId], references: [id], onDelete: Cascade)
   guildId   String
+  book      ChannelsOnBooks[]
 }
 
 model Book {
-  id           Int      @id
+  id           Int               @id
   title        String
   description  String?
   link         String
   cover        String
-  pubDate      DateTime @map("pub_date")
-  categoryName String   @map("category_name")
+  pubDate      DateTime          @map("pub_date")
+  categoryName String            @map("category_name")
   publisher    String
-  priceSales   Int      @map("price_sales")
+  priceSales   Int               @map("price_sales")
   author       String
-  views        Int      @default(0) @map("is_viewed")
-  createdAt    DateTime @default(now()) @map("created_at")
+  createdAt    DateTime          @default(now()) @map("created_at")
+  channels     ChannelsOnBooks[]
+}
+
+model ChannelsOnBooks {
+  book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId    Int      @map("book_id")
+  channel   Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  channelId String   @map("channel_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@id([bookId, channelId])
 }

@@ -1,23 +1,17 @@
 import { Book } from '@prisma/client'
 import db from '../db'
 
-const updateViewedBooks = async (books: Book[]) => {
-  const promises = books.map((book) => {
-    return new Promise((resolve) => {
-      resolve(
-        db.book.update({
-          where: {
-            id: book.id,
-          },
-          data: {
-            views: book.views + 1,
-          },
-        }),
-      )
-    })
+const updateViewedBooks = async (books: Book[], channel: string) => {
+  return new Promise((resolve) => {
+    resolve(
+      db.channelsOnBooks.createMany({
+        data: books.map((book) => ({
+          bookId: book.id,
+          channelId: channel,
+        })),
+      }),
+    )
   })
-
-  return Promise.all(promises)
 }
 
 export default updateViewedBooks

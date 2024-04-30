@@ -40,7 +40,6 @@ const fetchBookListBatch: BatchType = {
         publisher: item.publisher,
         priceSales: item.priceSales,
         author: item.author,
-        views: 0,
         createdAt: new Date(),
       }))
 
